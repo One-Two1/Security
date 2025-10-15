@@ -74,7 +74,7 @@ void FormatSize(ULONGLONG bytes, TCHAR* buffer, size_t bufferSize) {
 
 // Основная функция анализа накопителей
 void AnalyzeStorageDevices() {
-    _tprintf(_T("=== фnalysis of information storage devices===\n"));
+    _tprintf(_T("=== Analysis of information storage devices===\n"));
     
     TCHAR logicalDrives[MAX_PATH];
     TCHAR drivePath[] = _T("A:\\");
@@ -142,13 +142,39 @@ int main() {
              "Purpose: To determine the characteristics of storage devices\n"
              "Language: C\n"));
     
-    // Основной анализ
+             int choice;
+
+    do {
+        printf("\n\033[1;36mМЕНЮ ВЫБОРА:\033[0m\n");
+        printf("1.Main analize1\n");
+        printf("0. EXIT\n");
+
+        if (scanf("%d", &choice) != 1) {
+            while (getchar() != '\n'); // Очистка буфера
+            printf("Неверный ввод!\n");
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                 // Основной анализ
     AnalyzeStorageDevices();
+                 break;
+        case 0:
+                printf("EXIT.....\n");
+                break;
+
+            default:
+                printf("Неверный выбор!\n");
+        }
+
+    } while (choice != 0);
+
+   
     
   
     
-    _tprintf(_T("\nThe analysis is completed. Press Enter to exit...\n"));
-    _gettchar();
+   // _tprintf(_T("\nThe analysis is completed. Press Enter to exit...\n"));
     
     return 0;
 }
