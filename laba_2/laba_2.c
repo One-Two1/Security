@@ -110,6 +110,8 @@ char* read_line(void) {
 
 // Функция для замены всех вхождений подстроки
 char* replace_all(const char *str, const char *search, const char *replace) {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     if (str == NULL || search == NULL || replace == NULL) {
         return NULL;
     }
@@ -187,6 +189,7 @@ int main(int argc, char *argv[]) {
     // Обрабатываем стандартный ввод построчно
     char *line;
     while ((line = read_line()) != NULL) {
+
         // Выполняем замену
         char *result = replace_all(line, search, replace);
         if (result != NULL) {
